@@ -122,17 +122,21 @@ public class Comversor extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        try {
         double res = Double.valueOf(txtTemperatura.getText());
         Temperatura objT = new Temperatura(res);
        
         
         if (btnRCparaF.isSelected()){
-            JOptionPane.showMessageDialog(null, " TEMPERATURA EM °F É : "  + objT.ConverteTemF(res));
+            JOptionPane.showMessageDialog(null, " TEMPERATURA EM °F É : " + String.format("%.2f", objT.ConverteTemF(res)));
         }else if (btnRFparaC.isSelected()){
-            JOptionPane.showMessageDialog(null, " TEMPERATURA EM °C É : " + objT.ConverteTemC(res));
-        
-            
+            JOptionPane.showMessageDialog(null, " TEMPERATURA EM °C É : " + String.format("%.2f", objT.ConverteTemC(res)));
         }
+   } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Por favor, insira um valor numérico válido.");
+    }
+          // Limpar o campo de texto
+    txtTemperatura.setText("");
     }                                           
 
     private void txtTemperaturaActionPerformed(java.awt.event.ActionEvent evt) {                                               
