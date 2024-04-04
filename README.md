@@ -1,24 +1,15 @@
 # tela-conversor-de-temperatura
 
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author aluno.saolucas
- */
-public class Comversor extends javax.swing.JFrame {
+public class TelaTemperaturaFC extends javax.swing.JFrame {
 
     /**
-     * Creates new form Comversor
+     * Creates new form TelaTemperaturaFC
      */
-    public Comversor() {
+    public TelaTemperaturaFC() {
         initComponents();
     }
 
@@ -31,23 +22,20 @@ public class Comversor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        btngrupo = new javax.swing.ButtonGroup();
-        lblTitulo = new javax.swing.JLabel();
-        lblValor = new javax.swing.JLabel();
+        GrupoDeBotao = new javax.swing.ButtonGroup();
+        labelTitulo = new javax.swing.JLabel();
         btnCalcular = new javax.swing.JButton();
-        btnRCparaF = new javax.swing.JRadioButton();
-        btnRFparaC = new javax.swing.JRadioButton();
-        txtTemperatura = new javax.swing.JTextField();
+        rbtnFparaC = new javax.swing.JRadioButton();
+        rbtnCparaF = new javax.swing.JRadioButton();
+        CparaF = new javax.swing.JLabel();
+        FparaC = new javax.swing.JLabel();
+        CampoDeTxt = new javax.swing.JTextField();
+        labelTituloCtxt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(51, 0, 255));
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblTitulo.setText("CONVERSOR DE TEMPERATURA");
-
-        lblValor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblValor.setText("TEMPERATURA:");
+        labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelTitulo.setText("COMVERSOR DE TEMPERATURA");
 
         btnCalcular.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnCalcular.setText("CALCULAR");
@@ -57,101 +45,139 @@ public class Comversor extends javax.swing.JFrame {
             }
         });
 
-        btngrupo.add(btnRCparaF);
-        btnRCparaF.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnRCparaF.setSelected(true);
-        btnRCparaF.setText(" C° /  F °");
-
-        btngrupo.add(btnRFparaC);
-        btnRFparaC.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnRFparaC.setText(" F ° / C °");
-
-        txtTemperatura.addActionListener(new java.awt.event.ActionListener() {
+        GrupoDeBotao.add(rbtnFparaC);
+        rbtnFparaC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTemperaturaActionPerformed(evt);
+                rbtnFparaCActionPerformed(evt);
             }
         });
+
+        GrupoDeBotao.add(rbtnCparaF);
+
+        CparaF.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        CparaF.setText("°C / °F");
+
+        FparaC.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        FparaC.setText("°F / °C ");
+
+        labelTituloCtxt.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelTituloCtxt.setText("INSIRA A TEMP:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCalcular)
+                .addGap(169, 169, 169))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRCparaF)
-                            .addComponent(btnRFparaC)))
+                        .addGap(104, 104, 104)
+                        .addComponent(labelTitulo))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(lblValor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTemperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 64, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblTitulo)
-                        .addGap(56, 56, 56))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnCalcular)
-                        .addGap(145, 145, 145))))
+                        .addGap(123, 123, 123)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(CparaF, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbtnCparaF))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(FparaC)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(rbtnFparaC))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(labelTituloCtxt)
+                        .addGap(18, 18, 18)
+                        .addComponent(CampoDeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTitulo)
-                .addGap(39, 39, 39)
+                .addComponent(labelTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblValor)
-                    .addComponent(txtTemperatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(btnRCparaF)
-                .addGap(26, 26, 26)
-                .addComponent(btnRFparaC)
-                .addGap(40, 40, 40)
+                    .addComponent(CampoDeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelTituloCtxt))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CparaF, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbtnCparaF))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FparaC, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(rbtnFparaC, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(42, 42, 42)
                 .addComponent(btnCalcular)
-                .addGap(54, 54, 54))
+                .addGap(20, 20, 20))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>                        
 
+    private void rbtnFparaCActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+    }                                          
+
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        try {
-        double res = Double.valueOf(txtTemperatura.getText());
+      try {
+        double res = Double.parseDouble(CampoDeTxt.getText());
         Temperatura objT = new Temperatura(res);
-       
-        
-        if (btnRCparaF.isSelected()){
-            JOptionPane.showMessageDialog(null, " TEMPERATURA EM °F É : " + String.format("%.2f", objT.ConverteTemF(res)));
-        }else if (btnRFparaC.isSelected()){
-            JOptionPane.showMessageDialog(null, " TEMPERATURA EM °C É : " + String.format("%.2f", objT.ConverteTemC(res)));
+
+        if (rbtnCparaF.isSelected()) {
+            JOptionPane.showMessageDialog(null, "TEMPERATURA EM °F É : " + String.format("%.2f", objT.getTemperaturaFahrenheit()) + "\nCondição climática: " + objT.getTipoClima());
+        } else if (rbtnFparaC.isSelected()) {
+            double temperaturaCelsius = (res - 32) * 5 / 9; // Conversão de Fahrenheit para Celsius
+            JOptionPane.showMessageDialog(null, "TEMPERATURA EM °C É : " + String.format("%.2f", temperaturaCelsius) + "\nCondição climática: " + objT.getTipoClima());
         }
-   } catch (NumberFormatException e) {
+
+        // Chama o método para mudar a cor de fundo da janela
+        mudarCorDeFundo(objT.getTipoClima());
+    } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(null, "Por favor, insira um valor numérico válido.");
     }
-          // Limpar o campo de texto
-    txtTemperatura.setText("");
+    // Limpar o campo de texto
+    CampoDeTxt.setText("");
+
+
     }                                           
+             // Método para mudar a cor de fundo da tela com base no tipo de clima
+    private void mudarCorDeFundo(String tipoClima) {
+        Color corDeFundo;
 
-    private void txtTemperaturaActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        // TODO add your handling code here:
-    }                                              
+        switch (tipoClima.toLowerCase()) {
+            case "frio":
+                corDeFundo = Color.BLUE;
+                break;
+            case "agradável":
+                corDeFundo = Color.GRAY;
+                break;
+            case "quente":
+                corDeFundo = Color.RED;
+                break;
+            case "muito quente":
+                corDeFundo = Color.ORANGE;
+                break;
+            default:
+                corDeFundo = Color.WHITE; // Cor padrão
+                break;
+        }
 
-    /**
-     * @param args the command line arguments
-     */
+        getContentPane().setBackground(corDeFundo);
+    }
+    
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+       /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TelaTemperaturaFC().setVisible(true);
+            }
+        });
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -160,79 +186,93 @@ public class Comversor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Comversor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaTemperaturaFC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Comversor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaTemperaturaFC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Comversor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaTemperaturaFC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Comversor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaTemperaturaFC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Comversor().setVisible(true);
+                new TelaTemperaturaFC().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify                     
+    private javax.swing.JTextField CampoDeTxt;
+    private javax.swing.JLabel CparaF;
+    private javax.swing.JLabel FparaC;
+    private javax.swing.ButtonGroup GrupoDeBotao;
     private javax.swing.JButton btnCalcular;
-    private javax.swing.JRadioButton btnRCparaF;
-    private javax.swing.JRadioButton btnRFparaC;
-    private javax.swing.ButtonGroup btngrupo;
-    private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblValor;
-    private javax.swing.JTextField txtTemperatura;
+    private javax.swing.JLabel labelTitulo;
+    private javax.swing.JLabel labelTituloCtxt;
+    private javax.swing.JRadioButton rbtnCparaF;
+    private javax.swing.JRadioButton rbtnFparaC;
     // End of variables declaration                   
-}
+}                 
 
+
+2- PARTE 
 
 import javax.swing.JOptionPane;
 
-
 public class Temperatura {
 
-    private double Temperatura;
+    private double temperaturaCelsius;
+    private double temperaturaFahrenheit;
+    private String tipoClima;
 
-    public Temperatura(double Temperatura) {
-        this.Temperatura = Temperatura;
+    // Construtor para inicializar a temperatura em Celsius
+    public Temperatura(double temperaturaCelsius) {
+        this.temperaturaCelsius = temperaturaCelsius;
+        this.temperaturaFahrenheit = (this.temperaturaCelsius * 9 / 5) + 32;
+
+        definirTipoClima();
     }
 
-    public void setTemperatura(double Temperatura) {
-        this.Temperatura = Temperatura;
+    // Construtor para inicializar a temperatura com uma unidade específica (Celsius ou Fahrenheit)
+    public Temperatura(double temperatura, String unidade) {
+        if (unidade.equalsIgnoreCase("C")) {
+            this.temperaturaCelsius = temperatura;
+            this.temperaturaFahrenheit = (this.temperaturaCelsius * 9 / 5) + 32;
+        } else if (unidade.equalsIgnoreCase("F")) {
+            this.temperaturaFahrenheit = temperatura;
+            this.temperaturaCelsius = (this.temperaturaFahrenheit - 32) * 5 / 9;
+        }
 
-    }
-
-    public double getTemperatura() {
-
-        return Temperatura;
-    }
-    
-    public void exibir(){
-        JOptionPane.showMessageDialog(null, "TEMPERATURA" + getTemperatura());
-        
-        
-    }
-    
-    public double ConverteTemF(double Temperatura){
-    this.Temperatura = Temperatura;
-    double Temp = (Temperatura * 9/5 + 32);
-    return Temp;
-    }
-    
-     public double ConverteTemC(double Temperatura){
-    this.Temperatura = Temperatura;
-    double Temp = (Temperatura - 32) * 5 / 9;
-    return Temp;
+        definirTipoClima();
     }
 
-    void exibir(double res) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    // Método privado para definir o tipo de clima com base na temperatura em Fahrenheit
+    private void definirTipoClima() {
+        if (this.temperaturaCelsius <= 0) {
+            this.tipoClima = "Frio";
+        } else if (this.temperaturaCelsius >= 15 && this.temperaturaCelsius <= 23) {
+            this.tipoClima = "Agradável";
+        } else if (this.temperaturaCelsius >= 24 && this.temperaturaCelsius <= 35) {
+            this.tipoClima = "Quente";
+        } else {
+            this.tipoClima = "Muito Quente";
+        }
     }
-    
-    
 
+    // Métodos getter para obter a temperatura em Celsius e Fahrenheit, e o tipo de clima
+    public double getTemperaturaCelsius() {
+        return temperaturaCelsius;
+    }
+
+    public double getTemperaturaFahrenheit() {
+        return temperaturaFahrenheit;
+    }
+
+    public String getTipoClima() {
+        return tipoClima;
+    }
 }
+
