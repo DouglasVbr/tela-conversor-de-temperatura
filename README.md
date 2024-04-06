@@ -1,16 +1,21 @@
 # tela-conversor-de-temperatura
 
-
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class TelaTemperaturaFC extends javax.swing.JFrame {
-
+          // Variáveis adicionadas
+    private javax.swing.JLabel labelTipoClima;
     /**
      * Creates new form TelaTemperaturaFC
      */
     public TelaTemperaturaFC() {
         initComponents();
+        // Inicializa a labelTipoClima
+        labelTipoClima = new javax.swing.JLabel();
+        labelTipoClima.setFont(new java.awt.Font("Tahoma", 1, 12));
+        getContentPane().add(labelTipoClima);
+        labelTipoClima.setBounds(120, 240, 200, 20);
     }
 
     /**
@@ -127,7 +132,7 @@ public class TelaTemperaturaFC extends javax.swing.JFrame {
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {                                            
       try {
         double res = Double.parseDouble(CampoDeTxt.getText());
-        Temperatura objT = new Temperatura(res);
+        ConversorTemperatura objT = new ConversorTemperatura(res);
 
         if (rbtnCparaF.isSelected()) {
             JOptionPane.showMessageDialog(null, "TEMPERATURA EM °F É : " + String.format("%.2f", objT.getTemperaturaFahrenheit()) + "\nCondição climática: " + objT.getTipoClima());
@@ -136,39 +141,39 @@ public class TelaTemperaturaFC extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "TEMPERATURA EM °C É : " + String.format("%.2f", temperaturaCelsius) + "\nCondição climática: " + objT.getTipoClima());
         }
 
-        // Chama o método para mudar a cor de fundo da janela
-        mudarCorDeFundo(objT.getTipoClima());
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(null, "Por favor, insira um valor numérico válido.");
+        // Define o texto e a cor da labelTipoClima
+        labelTipoClima.setText("Condição climática: " + objT.getTipoClima());
+          mudarCorDoTextoLabel(objT.getTipoClima());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, insira um valor numérico válido.");
     }
     // Limpar o campo de texto
     CampoDeTxt.setText("");
 
 
     }                                           
-             // Método para mudar a cor de fundo da tela com base no tipo de clima
-    private void mudarCorDeFundo(String tipoClima) {
-        Color corDeFundo;
-
+             // Método para mudar a cor do texto da labelTipoClima com base no tipo de clima
+     private void mudarCorDoTextoLabel(String tipoClima) {
         switch (tipoClima.toLowerCase()) {
-            case "frio":
-                corDeFundo = Color.BLUE;
+             case "frio":
+                labelTipoClima.setForeground(Color.BLUE);
                 break;
             case "agradável":
-                corDeFundo = Color.GRAY;
+                labelTipoClima.setForeground(Color.GREEN);
                 break;
             case "quente":
-                corDeFundo = Color.RED;
+                labelTipoClima.setForeground(Color.ORANGE);
                 break;
             case "muito quente":
-                corDeFundo = Color.ORANGE;
+                labelTipoClima.setForeground(Color.RED);
                 break;
             default:
-                corDeFundo = Color.WHITE; // Cor padrão
+                labelTipoClima.setForeground(Color.BLACK); // Cor padrão
                 break;
+        
         }
 
-        getContentPane().setBackground(corDeFundo);
+        
     }
     
     public static void main(String args[]) {
@@ -215,50 +220,40 @@ public class TelaTemperaturaFC extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbtnCparaF;
     private javax.swing.JRadioButton rbtnFparaC;
     // End of variables declaration                   
-}                 
+
+   
+}
 
 
-2- PARTE 
+2- parte 
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
-public class Temperatura {
+public class ConversorTemperatura {
 
     private double temperaturaCelsius;
     private double temperaturaFahrenheit;
     private String tipoClima;
 
-    // Construtor para inicializar a temperatura em Celsius
-    public Temperatura(double temperaturaCelsius) {
+    // Construtor para inicializar a temperatura em Celsius e calcular Fahrenheit e tipo de clima
+    public ConversorTemperatura(double temperaturaCelsius) {
         this.temperaturaCelsius = temperaturaCelsius;
         this.temperaturaFahrenheit = (this.temperaturaCelsius * 9 / 5) + 32;
 
         definirTipoClima();
     }
 
-    // Construtor para inicializar a temperatura com uma unidade específica (Celsius ou Fahrenheit)
-    public Temperatura(double temperatura, String unidade) {
-        if (unidade.equalsIgnoreCase("C")) {
-            this.temperaturaCelsius = temperatura;
-            this.temperaturaFahrenheit = (this.temperaturaCelsius * 9 / 5) + 32;
-        } else if (unidade.equalsIgnoreCase("F")) {
-            this.temperaturaFahrenheit = temperatura;
-            this.temperaturaCelsius = (this.temperaturaFahrenheit - 32) * 5 / 9;
-        }
-
-        definirTipoClima();
-    }
-
     // Método privado para definir o tipo de clima com base na temperatura em Fahrenheit
     private void definirTipoClima() {
-        if (this.temperaturaCelsius <= 0) {
-            this.tipoClima = "Frio";
-        } else if (this.temperaturaCelsius >= 15 && this.temperaturaCelsius <= 23) {
-            this.tipoClima = "Agradável";
-        } else if (this.temperaturaCelsius >= 24 && this.temperaturaCelsius <= 35) {
-            this.tipoClima = "Quente";
+        if (this.temperaturaFahrenheit <= 64.4) {
+            this.tipoClima = "frio";
+        } else if (this.temperaturaFahrenheit >= 66.2 && this.temperaturaFahrenheit <= 73.4) {
+            this.tipoClima = "agradável";
+        } else if (this.temperaturaFahrenheit >= 75.2 && this.temperaturaFahrenheit <= 95) {
+            this.tipoClima = "quente";
         } else {
-            this.tipoClima = "Muito Quente";
+            this.tipoClima = "muito quente";
         }
     }
 
@@ -266,6 +261,7 @@ public class Temperatura {
     public double getTemperaturaCelsius() {
         return temperaturaCelsius;
     }
+    
 
     public double getTemperaturaFahrenheit() {
         return temperaturaFahrenheit;
@@ -275,4 +271,3 @@ public class Temperatura {
         return tipoClima;
     }
 }
-
